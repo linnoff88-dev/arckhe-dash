@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.3 - Tabelas e DataGrids | Dashboard Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📊</span>
+            <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Tecnicas</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Avancado</span>
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-dark-800/50 border-b border-dark-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center space-x-2 text-sm">
+        <a href="../../index.html" class="text-neutral-400 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-400 hover:text-neutral-300">Trilha 2</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-blue-400">Modulo 2.3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header com Stats -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4">
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.3</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📋 Tabelas e DataGrids</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mb-8">Sorting, paginacao, virtualizacao e data tables profissionais para grandes volumes de dados em dashboards.</p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📚</div>
+          <div class="text-xl font-bold text-blue-400">6</div>
+          <div class="text-xs text-neutral-500">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">⏱️</div>
+          <div class="text-xl font-bold text-blue-400">50min</div>
+          <div class="text-xs text-neutral-500">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">📊</div>
+          <div class="text-xl font-bold text-blue-400">Intermediario</div>
+          <div class="text-xs text-neutral-500">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-2xl mb-1">🎯</div>
+          <div class="text-xl font-bold text-blue-400">Pratico</div>
+          <div class="text-xs text-neutral-500">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- ==================== TOPICO 1 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">1</span>
+        <div>
+          <h2 class="text-2xl font-bold">📊 Anatomia de uma Data Table</h2>
+          <p class="text-neutral-400 text-sm">Estrutura completa de tabelas profissionais</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao Principal -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Data Tables</strong> sao componentes complexos para exibir dados tabulares com funcionalidades como ordenacao, filtragem, selecao e acoes. Diferem de tabelas HTML simples por serem interativas e otimizadas para grandes volumes.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Tabelas sao o <strong class="text-white">coracao de dashboards administrativos</strong>. Lista de clientes, pedidos, transacoes - tudo vira tabela. Uma tabela mal projetada torna o sistema inutilizavel; bem projetada, e extremamente poderosa.
+          </p>
+        </div>
+
+        <!-- Estrutura Visual -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🔍</span> Estrutura de uma Data Table
+          </h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-neutral-300">
+┌─────────────────────────────────────────────────────────────┐
+│ ☐ Selecionar todos    [🔍 Buscar...]    [Filtros] [Exportar]│ ← Toolbar
+├─────┬────────────────┬────────────┬──────────┬──────────────┤
+│ ☐   │ Nome ↑↓        │ Email      │ Status   │ Acoes        │ ← Header
+├─────┼────────────────┼────────────┼──────────┼──────────────┤
+│ ☐   │ Ana Silva      │ ana@...    │ ● Ativo  │ [✏️] [🗑️]   │ ← Row
+│ ☐   │ Bruno Lima     │ bruno@...  │ ○ Inativo│ [✏️] [🗑️]   │
+│ ☐   │ Carla Dias     │ carla@...  │ ● Ativo  │ [✏️] [🗑️]   │
+├─────┴────────────────┴────────────┴──────────┴──────────────┤
+│ Mostrando 1-10 de 156           [◀] [1] [2] [3] ... [▶]    │ ← Footer
+└─────────────────────────────────────────────────────────────┘</pre>
+          </div>
+        </div>
+
+        <!-- Componentes -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🧩</span> Componentes da Data Table
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">1. Toolbar</div>
+              <p class="text-neutral-400 text-sm">Busca global, filtros avancados, acoes em lote, exportacao.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">2. Header</div>
+              <p class="text-neutral-400 text-sm">Titulos ordenaveis, checkbox global, resize de colunas.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">3. Body (Rows)</div>
+              <p class="text-neutral-400 text-sm">Dados, selecao individual, hover states, linhas expandiveis.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">4. Footer</div>
+              <p class="text-neutral-400 text-sm">Paginacao, contador de resultados, itens por pagina.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exemplo Visual -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">👁️</span> Exemplo: Mini Data Table
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-600">
+                  <th class="text-left py-3 px-2 text-neutral-400">
+                    <input type="checkbox" class="rounded bg-dark-700 border-dark-500">
+                  </th>
+                  <th class="text-left py-3 px-2 text-neutral-400 cursor-pointer hover:text-white">Nome ↕</th>
+                  <th class="text-left py-3 px-2 text-neutral-400 cursor-pointer hover:text-white">Email</th>
+                  <th class="text-left py-3 px-2 text-neutral-400">Status</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-700 hover:bg-dark-700/50">
+                  <td class="py-3 px-2"><input type="checkbox" class="rounded bg-dark-700 border-dark-500"></td>
+                  <td class="py-3 px-2 font-medium">Ana Silva</td>
+                  <td class="py-3 px-2">ana@exemplo.com</td>
+                  <td class="py-3 px-2"><span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded text-xs">Ativo</span></td>
+                </tr>
+                <tr class="border-b border-dark-700 hover:bg-dark-700/50">
+                  <td class="py-3 px-2"><input type="checkbox" class="rounded bg-dark-700 border-dark-500"></td>
+                  <td class="py-3 px-2 font-medium">Bruno Lima</td>
+                  <td class="py-3 px-2">bruno@exemplo.com</td>
+                  <td class="py-3 px-2"><span class="px-2 py-1 bg-neutral-500/20 text-neutral-400 rounded text-xs">Inativo</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Dica -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Comece simples:</strong> Adicione funcionalidades incrementalmente. Uma tabela basica bem estilizada e melhor que uma super complexa cheia de bugs. Comece com ordenacao, depois adicione paginacao, depois filtros.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 2 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">2</span>
+        <div>
+          <h2 class="text-2xl font-bold">🔀 Ordenacao (Sorting)</h2>
+          <p class="text-neutral-400 text-sm">Reorganizar dados por qualquer coluna</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Ordenacao</strong> permite reorganizar dados por qualquer coluna em ordem crescente ou decrescente. Usuarios esperam clicar no cabecalho para ordenar. Suportar ordenacao multipla (shift+click) e um diferencial.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Ordenacao e a <strong class="text-white">funcionalidade mais usada em tabelas</strong>. "Quem sao os maiores clientes?", "Quais pedidos sao mais recentes?" - tudo requer ordenacao. Sem ela, tabelas sao estaticas e frustrantes.
+          </p>
+        </div>
+
+        <!-- Estados de Ordenacao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🔄</span> Estados de Ordenacao
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">↕️</div>
+              <div class="font-semibold text-white">Nao ordenado</div>
+              <p class="text-neutral-400 text-sm">Estado inicial, clicavel</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">⬆️</div>
+              <div class="font-semibold text-white">Ascendente (A-Z)</div>
+              <p class="text-neutral-400 text-sm">Menor para maior</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">⬇️</div>
+              <div class="font-semibold text-white">Descendente (Z-A)</div>
+              <p class="text-neutral-400 text-sm">Maior para menor</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Logica de Ordenacao
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Funcao de ordenacao generica
+function sortTable(data, column, direction = 'asc') {
+  return [...data].sort((a, b) => {
+    let valA = a[column];
+    let valB = b[column];
+
+    // Normalizar strings para comparacao
+    if (typeof valA === 'string') {
+      valA = valA.toLowerCase();
+      valB = valB.toLowerCase();
+    }
+
+    // Comparacao
+    if (valA < valB) return direction === 'asc' ? -1 : 1;
+    if (valA > valB) return direction === 'asc' ? 1 : -1;
+    return 0;
+  });
+}
+
+// Uso
+const sortedData = sortTable(users, 'name', 'asc');
+
+// Header clicavel (HTML)
+&lt;th class="cursor-pointer hover:bg-dark-700 select-none px-4 py-3"
+    onclick="handleSort('name')"&gt;
+  &lt;span class="flex items-center"&gt;
+    Nome
+    &lt;span class="ml-2 text-neutral-500"&gt;
+      {sortColumn === 'name' ? (sortDir === 'asc' ? '↑' : '↓') : '↕'}
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/th&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Fazer vs Evitar -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">✅ Fazer vs ❌ Evitar</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="text-emerald-400 font-semibold mb-3">✅ Fazer</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Indicar visualmente coluna ordenada</li>
+                <li>• Ciclo: neutro → asc → desc → neutro</li>
+                <li>• Manter ordenacao ao paginar</li>
+                <li>• Ordenar no backend se muitos dados</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div class="text-red-400 font-semibold mb-3">❌ Evitar</div>
+              <ul class="space-y-2 text-sm text-neutral-300">
+                <li>• Ordenar coluna sem feedback visual</li>
+                <li>• Ordenar 10k+ registros no frontend</li>
+                <li>• Ignorar tipos (numero vs string)</li>
+                <li>• Perder ordenacao ao mudar de pagina</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 3 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">3</span>
+        <div>
+          <h2 class="text-2xl font-bold">📄 Paginacao</h2>
+          <p class="text-neutral-400 text-sm">Dividir dados em paginas gerenciaveis</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Paginacao</strong> divide grandes conjuntos de dados em paginas menores. Tipicamente 10, 25, 50 ou 100 itens por pagina. Essencial para performance e usabilidade quando ha centenas ou milhares de registros.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Tabelas com <strong class="text-white">1000+ linhas sem paginacao travam o navegador</strong> e sao impossiveis de navegar. Paginacao melhora performance, facilita navegacao e permite o backend enviar dados em chunks.
+          </p>
+        </div>
+
+        <!-- Tipos de Paginacao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📊</span> Tipos de Paginacao
+          </h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-blue-500">
+              <div class="font-semibold text-white mb-2">Numerada (mais comum)</div>
+              <div class="flex items-center space-x-2 text-sm mt-2">
+                <button class="px-3 py-1 bg-dark-600 rounded">◀</button>
+                <button class="px-3 py-1 bg-blue-600 rounded">1</button>
+                <button class="px-3 py-1 bg-dark-600 rounded">2</button>
+                <button class="px-3 py-1 bg-dark-600 rounded">3</button>
+                <span class="px-2 text-neutral-500">...</span>
+                <button class="px-3 py-1 bg-dark-600 rounded">16</button>
+                <button class="px-3 py-1 bg-dark-600 rounded">▶</button>
+              </div>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-emerald-500">
+              <div class="font-semibold text-white mb-2">Load More (scroll progressivo)</div>
+              <p class="text-neutral-400 text-sm">Botao "Carregar mais" no final da lista. Bom para feeds infinitos.</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-yellow-500">
+              <div class="font-semibold text-white mb-2">Infinite Scroll</div>
+              <p class="text-neutral-400 text-sm">Carrega automaticamente ao scrollar. Use com cuidado - pode ser confuso.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Componente de Paginacao
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">&lt;!-- Paginacao completa --&gt;
+&lt;div class="flex items-center justify-between px-4 py-3 border-t border-dark-600"&gt;
+
+  &lt;!-- Info de resultados --&gt;
+  &lt;p class="text-sm text-neutral-400"&gt;
+    Mostrando &lt;span class="font-medium text-white"&gt;1&lt;/span&gt; a
+    &lt;span class="font-medium text-white"&gt;10&lt;/span&gt; de
+    &lt;span class="font-medium text-white"&gt;156&lt;/span&gt; resultados
+  &lt;/p&gt;
+
+  &lt;!-- Navegacao --&gt;
+  &lt;div class="flex items-center space-x-1"&gt;
+    &lt;button class="px-3 py-1.5 rounded bg-dark-700 hover:bg-dark-600
+                   disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled&gt;◀ Anterior&lt;/button&gt;
+
+    &lt;button class="px-3 py-1.5 rounded bg-blue-600 text-white"&gt;1&lt;/button&gt;
+    &lt;button class="px-3 py-1.5 rounded bg-dark-700 hover:bg-dark-600"&gt;2&lt;/button&gt;
+    &lt;button class="px-3 py-1.5 rounded bg-dark-700 hover:bg-dark-600"&gt;3&lt;/button&gt;
+    &lt;span class="px-2 text-neutral-500"&gt;...&lt;/span&gt;
+    &lt;button class="px-3 py-1.5 rounded bg-dark-700 hover:bg-dark-600"&gt;16&lt;/button&gt;
+
+    &lt;button class="px-3 py-1.5 rounded bg-dark-700 hover:bg-dark-600"&gt;
+      Proximo ▶
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+// Calculo de paginacao (JavaScript)
+const itemsPerPage = 10;
+const currentPage = 1;
+const totalItems = 156;
+
+const totalPages = Math.ceil(totalItems / itemsPerPage); // 16
+const startIndex = (currentPage - 1) * itemsPerPage;     // 0
+const endIndex = startIndex + itemsPerPage;              // 10
+const pageData = allData.slice(startIndex, endIndex);</pre>
+          </div>
+        </div>
+
+        <!-- Dica -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Permita configurar itens por pagina:</strong> Adicione um seletor (10, 25, 50, 100) para usuarios que preferem ver mais ou menos dados de uma vez. Power users geralmente preferem 50-100.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 4 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">4</span>
+        <div>
+          <h2 class="text-2xl font-bold">⚡ Virtualizacao de Tabelas</h2>
+          <p class="text-neutral-400 text-sm">Performance com milhares de linhas</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Virtualizacao</strong> renderiza apenas as linhas visiveis na tela, mesmo com milhares de registros. Conforme o usuario scrolla, linhas sao recicladas. Permite scroll "infinito" sem paginacao tradicional.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Para datasets enormes <strong class="text-white">(10k+ linhas), paginacao ainda pode ser lenta</strong>. Virtualizacao mantem 60fps mesmo com 100k linhas. Bibliotecas como react-window e TanStack Virtual facilitam a implementacao.
+          </p>
+        </div>
+
+        <!-- Como Funciona -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">🔍</span> Como a Virtualizacao Funciona
+          </h3>
+          <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-neutral-300">
+Dados totais: 10.000 linhas
+Viewport visivel: ~20 linhas
+
+┌──────────────────────────────────────┐
+│      Espaco vazio (padding-top)      │  ← Altura simulada
+├──────────────────────────────────────┤
+│ Linha 245  ████████████████████████  │
+│ Linha 246  ████████████████████████  │  ← Apenas linhas
+│ Linha 247  ████████████████████████  │    visiveis sao
+│ Linha 248  ████████████████████████  │    renderizadas
+│ Linha 249  ████████████████████████  │    no DOM
+│ Linha 250  ████████████████████████  │
+├──────────────────────────────────────┤
+│      Espaco vazio (padding-bottom)   │  ← Altura simulada
+└──────────────────────────────────────┘
+
+Processo ao scrollar:
+1. Detecta posicao do scroll
+2. Calcula quais linhas estao visiveis
+3. Renderiza apenas essas + buffer
+4. Recicla elementos DOM existentes
+5. Ajusta padding para manter scrollbar correta</pre>
+          </div>
+        </div>
+
+        <!-- Bibliotecas -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📦</span> Bibliotecas de Virtualizacao
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">react-window</div>
+              <p class="text-neutral-400 text-sm mb-2">Leve (~6KB), API simples. Recomendado para React.</p>
+              <code class="text-xs text-neutral-500">npm install react-window</code>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">TanStack Virtual</div>
+              <p class="text-neutral-400 text-sm mb-2">Framework-agnostic. React, Vue, Solid, Svelte.</p>
+              <code class="text-xs text-neutral-500">npm install @tanstack/virtual-core</code>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">vue-virtual-scroller</div>
+              <p class="text-neutral-400 text-sm mb-2">Especifico para Vue.js. Bem documentado.</p>
+              <code class="text-xs text-neutral-500">npm install vue-virtual-scroller</code>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4">
+              <div class="text-blue-400 font-semibold mb-2">AG Grid</div>
+              <p class="text-neutral-400 text-sm mb-2">Enterprise-grade. Virtualizacao built-in.</p>
+              <code class="text-xs text-neutral-500">npm install ag-grid-community</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quando Usar -->
+        <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-yellow-400 mb-3 flex items-center">
+            <span class="mr-2">⚠️</span> Quando Usar Virtualizacao
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div>
+              <div class="text-emerald-400 font-semibold mb-2">✅ Use quando</div>
+              <ul class="text-neutral-300 space-y-1">
+                <li>• 1000+ linhas de dados</li>
+                <li>• Scroll infinito e necessario</li>
+                <li>• Paginacao nao e desejada pelo UX</li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-red-400 font-semibold mb-2">❌ Nao precisa quando</div>
+              <ul class="text-neutral-300 space-y-1">
+                <li>• Menos de 500 linhas</li>
+                <li>• Paginacao resolve o problema</li>
+                <li>• Adiciona complexidade desnecessaria</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 5 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">5</span>
+        <div>
+          <h2 class="text-2xl font-bold">☑️ Selecao e Acoes em Lote</h2>
+          <p class="text-neutral-400 text-sm">Operar em multiplos registros</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            <strong class="text-blue-400">Selecao em lote</strong> permite selecionar multiplas linhas para executar acoes: deletar varios, exportar selecionados, alterar status em massa. Checkboxes nas linhas + checkbox "selecionar todos" no header.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Usuarios administrativos <strong class="text-white">frequentemente precisam agir em multiplos registros</strong>. Sem selecao em lote, teriam que repetir a mesma acao dezenas de vezes. Produtividade aumenta exponencialmente.
+          </p>
+        </div>
+
+        <!-- Estados de Selecao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📋</span> Estados do Checkbox Principal
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">☐</div>
+              <div class="font-semibold text-white">Nenhum selecionado</div>
+              <p class="text-neutral-400 text-sm">Checkbox vazio</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">▣</div>
+              <div class="font-semibold text-white">Alguns selecionados</div>
+              <p class="text-neutral-400 text-sm">Checkbox indeterminado</p>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">☑️</div>
+              <div class="font-semibold text-white">Todos selecionados</div>
+              <p class="text-neutral-400 text-sm">Checkbox marcado</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Logica de Selecao
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">// Estado de selecao (usando Set para performance)
+const [selectedIds, setSelectedIds] = useState(new Set());
+
+// Toggle selecao individual
+function toggleSelect(id) {
+  const newSet = new Set(selectedIds);
+  if (newSet.has(id)) {
+    newSet.delete(id);
+  } else {
+    newSet.add(id);
+  }
+  setSelectedIds(newSet);
+}
+
+// Toggle selecionar todos
+function toggleSelectAll() {
+  if (selectedIds.size === data.length) {
+    setSelectedIds(new Set());  // deseleciona todos
+  } else {
+    setSelectedIds(new Set(data.map(item => item.id)));  // seleciona todos
+  }
+}
+
+// Barra de acoes em lote (aparece quando ha selecao)
+{selectedIds.size > 0 && (
+  &lt;div class="bg-blue-900/50 border-b border-blue-500/30 px-4 py-3
+              flex items-center justify-between"&gt;
+    &lt;span class="text-blue-300"&gt;
+      {selectedIds.size} item(s) selecionado(s)
+    &lt;/span&gt;
+    &lt;div class="flex space-x-3"&gt;
+      &lt;button class="text-red-400 hover:text-red-300"&gt;
+        🗑️ Excluir
+      &lt;/button&gt;
+      &lt;button class="text-blue-400 hover:text-blue-300"&gt;
+        📤 Exportar
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+)}</pre>
+          </div>
+        </div>
+
+        <!-- Dica -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center">
+            <span class="mr-2">💡</span> Dica Pratica
+          </h3>
+          <p class="text-neutral-300">
+            <strong>Confirmacao para acoes destrutivas:</strong> Sempre peca confirmacao antes de deletar multiplos registros. Um modal simples "Voce esta prestes a excluir 15 registros. Esta acao nao pode ser desfeita." evita desastres.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOPICO 6 ==================== -->
+    <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <span class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex items-center justify-center mr-4">6</span>
+        <div>
+          <h2 class="text-2xl font-bold">📱 Tabelas Responsivas</h2>
+          <p class="text-neutral-400 text-sm">Adaptar para todas as telas</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Explicacao -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Em telas menores, nem todas as colunas cabem. Estrategias incluem: <strong class="text-blue-400">scroll horizontal</strong>, <strong class="text-blue-400">esconder colunas</strong> menos importantes, ou <strong class="text-blue-400">transformar em cards</strong>.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Dashboards sao acessados em tablets e celulares. <strong class="text-white">Uma tabela de 10 colunas em mobile e inutilizavel</strong>. Definir estrategia responsiva e essencial para usabilidade multiplataforma.
+          </p>
+        </div>
+
+        <!-- Estrategias -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">📐</span> Estrategias Responsivas
+          </h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-blue-500">
+              <div class="font-semibold text-white mb-2">1. Esconder Colunas por Breakpoint</div>
+              <p class="text-neutral-400 text-sm mb-2">Use classes Tailwind para mostrar/ocultar colunas.</p>
+              <code class="text-xs text-green-400">class="hidden md:table-cell"</code>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-emerald-500">
+              <div class="font-semibold text-white mb-2">2. Scroll Horizontal</div>
+              <p class="text-neutral-400 text-sm mb-2">Container com overflow-x-auto.</p>
+              <code class="text-xs text-green-400">&lt;div class="overflow-x-auto"&gt;&lt;table&gt;...&lt;/table&gt;&lt;/div&gt;</code>
+            </div>
+            <div class="bg-dark-700/50 rounded-lg p-4 border-l-4 border-yellow-500">
+              <div class="font-semibold text-white mb-2">3. Cards em Mobile</div>
+              <p class="text-neutral-400 text-sm mb-2">Tabela em desktop, cards em mobile.</p>
+              <code class="text-xs text-green-400">class="hidden sm:block" / class="sm:hidden"</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+            <span class="mr-2">💻</span> Codigo: Tabela Responsiva
+          </h3>
+          <div class="bg-dark-900 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre class="text-green-400">&lt;!-- Estrategia 1: Esconder colunas --&gt;
+&lt;table class="w-full"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nome&lt;/th&gt;                               &lt;!-- sempre visivel --&gt;
+      &lt;th class="hidden sm:table-cell"&gt;Email&lt;/th&gt;  &lt;!-- sm+ --&gt;
+      &lt;th class="hidden md:table-cell"&gt;Telefone&lt;/th&gt;&lt;!-- md+ --&gt;
+      &lt;th class="hidden lg:table-cell"&gt;Empresa&lt;/th&gt; &lt;!-- lg+ --&gt;
+      &lt;th&gt;Acoes&lt;/th&gt;                              &lt;!-- sempre visivel --&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ana Silva&lt;/td&gt;
+      &lt;td class="hidden sm:table-cell"&gt;ana@email.com&lt;/td&gt;
+      &lt;td class="hidden md:table-cell"&gt;(11) 99999&lt;/td&gt;
+      &lt;td class="hidden lg:table-cell"&gt;Acme Inc&lt;/td&gt;
+      &lt;td&gt;[Edit]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- Estrategia 3: Card em mobile --&gt;
+&lt;div class="hidden sm:block"&gt;
+  &lt;table&gt;...tabela completa...&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div class="sm:hidden space-y-4"&gt;
+  {data.map(item =&gt; (
+    &lt;div class="bg-dark-800 rounded-lg p-4 border border-dark-600"&gt;
+      &lt;div class="font-bold"&gt;{item.name}&lt;/div&gt;
+      &lt;div class="text-sm text-neutral-400"&gt;{item.email}&lt;/div&gt;
+      &lt;div class="mt-2"&gt;[Acoes]&lt;/div&gt;
+    &lt;/div&gt;
+  ))}
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Prioridade de Colunas -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-4">📊 Prioridade de Colunas</h3>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-3">
+              <span class="text-white font-medium">Alta prioridade</span>
+              <span class="text-emerald-400 text-sm">ID, Nome, Status, Acoes</span>
+            </div>
+            <div class="flex items-center justify-between bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-3">
+              <span class="text-white font-medium">Media prioridade</span>
+              <span class="text-yellow-400 text-sm">Email, Data, Valor</span>
+            </div>
+            <div class="flex items-center justify-between bg-red-900/20 border border-red-500/30 rounded-lg p-3">
+              <span class="text-white font-medium">Baixa prioridade</span>
+              <span class="text-red-400 text-sm">Telefone, Empresa, Notas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== RESUMO ==================== -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Anatomia da Data Table</strong>
+              <span class="text-neutral-400"> - Toolbar, Header, Body, Footer</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Ordenacao</strong>
+              <span class="text-neutral-400"> - Click no header, indicadores visuais, asc/desc</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Paginacao</strong>
+              <span class="text-neutral-400"> - Numerada, load more, itens por pagina configuravel</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Virtualizacao</strong>
+              <span class="text-neutral-400"> - Para 10k+ linhas, renderiza apenas visivel</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Selecao em Lote</strong>
+              <span class="text-neutral-400"> - Checkboxes, acoes em massa, confirmacao</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Responsividade</strong>
+              <span class="text-neutral-400"> - Esconder colunas, scroll horizontal, cards mobile</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-2-2.html" class="flex-1 px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg text-center transition-colors">
+            ← Graficos e Visualizacoes
+          </a>
+          <a href="modulo-2-4.html" class="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-center transition-colors font-semibold">
+            Proximo: Filtros e Busca →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+      <p>Dashboard Mastery - Modulo 2.3: Tabelas e DataGrids</p>
+      <p class="mt-2"><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>
