@@ -109,7 +109,7 @@ Cada topico DEVE ter estas 3 secoes:
 
 ```
 TRILHA INDEX
-├── Navigation Global (com INEMA.CLUB)
+├── Navigation Global (com ARCKHÉ AI)
 ├── Header
 │   └── Badge da trilha
 │   └── Titulo + emoji
@@ -134,7 +134,7 @@ TRILHA INDEX
 
 ```
 MODULO COMPLETO
-├── Navigation Global (com INEMA.CLUB)
+├── Navigation Global (com ARCKHÉ AI)
 ├── Breadcrumb (Inicio / Trilha X / Modulo X.X)
 ├── Header
 │   └── Badge do modulo
@@ -192,7 +192,7 @@ MODULO COMPLETO
 ### Antes de Publicar, Verificar:
 
 **Estrutura:**
-- [ ] Navigation com INEMA.CLUB (sky-400)
+- [ ] Navigation com ARCKHÉ AI (sky-400)
 - [ ] Trilhas com descricao (Fundamentos, Tecnicas, Avancado)
 - [ ] Header completo (badge, titulo, descricao)
 - [ ] Stats banner com metricas relevantes

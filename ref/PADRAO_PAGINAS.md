@@ -7,20 +7,20 @@ Padrao visual e estrutural baseado nos projetos SHIA e NanoBanana.
 ## 1. Menu no Topo
 
 ```html
-[📊 Dashboard Mastery] | [INEMA.CLUB]
+[📊 Dashboard Mastery] | [ARCKHÉ AI]
 [Fundamentos] [Tecnicas] [Avancado] [🌙 Theme]
 ```
 
 **Elementos:**
 - Logo com emoji + nome do curso
-- Link externo para INEMA.CLUB (azul claro `text-sky-400`)
+- Link externo para ARCKHÉ AI (azul claro `text-sky-400`)
 - Botoes das trilhas com descricao (ativo com cor, outros neutros)
   - T1: Fundamentos (emerald)
   - T2: Tecnicas (blue)
   - T3: Avancado (purple)
 - Toggle de tema (dark/light)
 
-**INEMA.CLUB deve aparecer em TODAS as paginas (index, trilhas, modulos)**
+**ARCKHÉ AI deve aparecer em TODAS as paginas (index, trilhas, modulos)**
 
 ---
 
@@ -189,7 +189,7 @@ function closeModal() {
 
 ---
 
-## Link INEMA.CLUB
+## Link ARCKHÉ AI
 
 - Cor: `text-sky-400 hover:text-sky-300`
 - Deve aparecer em TODAS as paginas

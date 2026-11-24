@@ -42,7 +42,7 @@ Dashboard Mastery
 
 1. **Navigation Global**
    - Logo: `📊 Dashboard Mastery` (yellow-400)
-   - Link: `INEMA.CLUB` (sky-400) - OBRIGATORIO
+   - Link: `ARCKHÉ AI` (sky-400) - OBRIGATORIO
    - Trilhas: `Fundamentos | Tecnicas | Avancado` (mobile: T1 | T2 | T3)
    - Theme Toggle: SVG icons dark/light
 
@@ -85,7 +85,7 @@ Dashboard Mastery
           <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
         </a>
         <span class="text-neutral-600">|</span>
-        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        <a href="https://ARCKHÉ AI" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">ARCKHÉ AI</a>
       </div>
       <div class="flex items-center space-x-1 sm:space-x-2">
         <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
@@ -248,7 +248,7 @@ Dashboard Mastery
 
 ### Durante Criacao
 
-- [ ] Navigation com INEMA.CLUB
+- [ ] Navigation com ARCKHÉ AI
 - [ ] Trilhas com nomes completos (Fundamentos, Tecnicas, Avancado)
 - [ ] Breadcrumb correto
 - [ ] Header com badge, titulo, descricao

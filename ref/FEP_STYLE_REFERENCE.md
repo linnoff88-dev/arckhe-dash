@@ -103,7 +103,7 @@ Tagline:  "Supercurso de Dashboards Profissionais"
 ### Link Externo
 
 ```
-INEMA.CLUB:  text-sky-400 hover:text-sky-300
+ARCKHÉ AI:  text-sky-400 hover:text-sky-300
 Posicao:     Ao lado do logo, separado por |
 Visivel:     Em TODAS as paginas
 ```
@@ -118,14 +118,14 @@ Visivel:     Em TODAS as paginas
 <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-14">
-      <!-- Logo + INEMA.CLUB -->
+      <!-- Logo + ARCKHÉ AI -->
       <div class="flex items-center space-x-4">
         <a href="index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
           <span class="text-2xl">📊</span>
           <span class="font-bold text-lg hidden sm:inline">Dashboard Mastery</span>
         </a>
         <span class="text-neutral-600">|</span>
-        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        <a href="https://ARCKHÉ AI" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">ARCKHÉ AI</a>
       </div>
 
       <!-- Trilhas + Theme Toggle -->
@@ -194,7 +194,7 @@ Numero:     w-6 h-6 rounded-full bg-purple-500/20 text-purple-400
 | `blue` | Informacao, dados, Trilha 2 |
 | `yellow/primary` | Logo, CTAs, destaques |
 | `purple` | Avancado, premium, Trilha 3 |
-| `sky` | Links externos (INEMA.CLUB) |
+| `sky` | Links externos (ARCKHÉ AI) |
 
 ---
 
@@ -329,7 +329,7 @@ function toggleTopic(button) {
 
 ## Checklist de Implementacao
 
-- [ ] Navigation com INEMA.CLUB (sky-400)
+- [ ] Navigation com ARCKHÉ AI (sky-400)
 - [ ] Trilhas com descricao (Fundamentos, Tecnicas, Avancado)
 - [ ] Header completo (badge, titulo, descricao)
 - [ ] Stats banner com metricas
