@@ -90,7 +90,7 @@
       <p class="text-lg text-neutral-400 max-w-3xl">
         Aprenda a implementar sistemas de tema completos em dashboards. Domine dark mode
         com Tailwind, persistência de preferências, respeito às configurações do sistema
-        e criação de temas personalizáveis.
+        e criaçêo de temas personalizáveis.
       </p>
 
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 max-w-2xl">
@@ -100,7 +100,7 @@
         </div>
         <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
           <div class="text-xl font-bold text-emerald-400">45min</div>
-          <div class="text-xs text-neutral-400">Duração</div>
+          <div class="text-xs text-neutral-400">Duraçêo</div>
         </div>
         <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
           <div class="text-xl font-bold text-emerald-400">Básico</div>
@@ -125,7 +125,7 @@
       </div>
 
       <p class="text-neutral-300 mb-6 leading-relaxed">
-        <strong class="text-emerald-400">Dark mode</strong> não é apenas uma tendência estética -
+        <strong class="text-emerald-400">Dark mode</strong> nêo é apenas uma tendência estética -
         é uma necessidade funcional para dashboards. Usuários frequentemente passam horas
         analisando dados, e o modo escuro reduz fadiga visual significativamente.
       </p>
@@ -144,7 +144,7 @@
           </div>
           <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-purple-400">
             <h4 class="font-semibold text-purple-400 mb-2">🌃 Uso Noturno</h4>
-            <p class="text-sm text-neutral-400">Reduz interrupção do ciclo circadiano</p>
+            <p class="text-sm text-neutral-400">Reduz interrupçêo do ciclo circadiano</p>
           </div>
           <div class="bg-dark-800/50 p-4 rounded-lg border-l-4 border-yellow-400">
             <h4 class="font-semibold text-yellow-400 mb-2">🎯 Foco no Conteúdo</h4>
@@ -197,8 +197,8 @@
           <ul class="space-y-2 text-sm text-slate-600">
             <li>• Ambientes muito iluminados</li>
             <li>• Leitura de textos longos</li>
-            <li>• Documentação e relatórios</li>
-            <li>• Impressão de conteúdo</li>
+            <li>• Documentaçêo e relatórios</li>
+            <li>• Impressêo de conteúdo</li>
             <li>• Preferência pessoal do usuário</li>
           </ul>
         </div>
@@ -250,7 +250,7 @@ module.exports = {
             <ul class="space-y-1 text-xs text-neutral-400">
               <li>• Automático via prefers-color-scheme</li>
               <li>• Zero JavaScript necessário</li>
-              <li>• Usuário não pode escolher</li>
+              <li>• Usuário nêo pode escolher</li>
               <li>• Mais simples, menos flexível</li>
             </ul>
           </div>
@@ -334,14 +334,14 @@ module.exports = {
       </div>
 
       <p class="text-neutral-300 mb-6 leading-relaxed">
-        Uma implementação profissional de dark mode deve <strong class="text-emerald-400">respeitar
-        a preferência do sistema</strong> por padrão, mas permitir que o usuário escolha
+        Uma implementaçêo profissional de dark mode deve <strong class="text-emerald-400">respeitar
+        a preferência do sistema</strong> por padrêo, mas permitir que o usuário escolha
         e <strong class="text-emerald-400">persistir essa escolha</strong> entre sessões.
       </p>
 
-      <!-- Fluxo de Decisão -->
+      <!-- Fluxo de Decisêo -->
       <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
-        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🔄 Fluxo de Decisão do Tema</h3>
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🔄 Fluxo de Decisêo do Tema</h3>
         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
           <div class="bg-dark-800 p-4 rounded-lg text-center flex-1">
             <div class="text-2xl mb-2">💾</div>
@@ -358,14 +358,14 @@ module.exports = {
           <div class="bg-dark-800 p-4 rounded-lg text-center flex-1">
             <div class="text-2xl mb-2">🌙</div>
             <h4 class="font-semibold text-neutral-200 text-sm">3. Fallback</h4>
-            <p class="text-xs text-neutral-400">Dark mode (padrão)</p>
+            <p class="text-xs text-neutral-400">Dark mode (padrêo)</p>
           </div>
         </div>
       </div>
 
-      <!-- Implementação Completa -->
+      <!-- Implementaçêo Completa -->
       <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
-        <h3 class="text-lg font-semibold text-emerald-400 mb-4">💻 Implementação Completa</h3>
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">💻 Implementaçêo Completa</h3>
         <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
           <pre class="text-neutral-300">
 <span class="text-purple-400">// Script que deve rodar ANTES do conteúdo (no &lt;head&gt;)</span>
@@ -375,7 +375,7 @@ module.exports = {
     <span class="text-blue-400">const</span> stored = localStorage.getItem(<span class="text-yellow-400">'theme'</span>);
     <span class="text-blue-400">const</span> prefersDark = window.matchMedia(<span class="text-yellow-400">'(prefers-color-scheme: dark)'</span>).matches;
 
-    <span class="text-purple-400">// Prioridade: localStorage > sistema > dark (padrão)</span>
+    <span class="text-purple-400">// Prioridade: localStorage > sistema > dark (padrêo)</span>
     <span class="text-blue-400">if</span> (stored === <span class="text-yellow-400">'light'</span>) {
       document.documentElement.classList.remove(<span class="text-yellow-400">'dark'</span>);
     } <span class="text-blue-400">else if</span> (stored === <span class="text-yellow-400">'dark'</span>) {
@@ -388,7 +388,7 @@ module.exports = {
   })();
 &lt;/script&gt;
 
-<span class="text-purple-400">// Função de toggle (pode ser chamada pelo botão)</span>
+<span class="text-purple-400">// Funçêo de toggle (pode ser chamada pelo botêo)</span>
 <span class="text-blue-400">function</span> toggleTheme() {
   <span class="text-blue-400">const</span> html = document.documentElement;
   <span class="text-blue-400">const</span> isDark = html.classList.toggle(<span class="text-yellow-400">'dark'</span>);
@@ -397,7 +397,7 @@ module.exports = {
   localStorage.setItem(<span class="text-yellow-400">'theme'</span>, isDark ? <span class="text-yellow-400">'dark'</span> : <span class="text-yellow-400">'light'</span>);
 }
 
-<span class="text-purple-400">// Botão de toggle</span>
+<span class="text-purple-400">// Botêo de toggle</span>
 &lt;button onclick="<span class="text-emerald-400">toggleTheme()</span>" class="..."&gt;
   &lt;span class="<span class="text-emerald-400">dark:hidden</span>"&gt;🌙&lt;/span&gt;
   &lt;span class="<span class="text-emerald-400">hidden dark:inline</span>"&gt;☀️&lt;/span&gt;
@@ -565,7 +565,7 @@ module.exports = {
           <pre class="text-neutral-300">
 <span class="text-purple-400">/* styles/themes.css */</span>
 
-<span class="text-purple-400">/* Tema Base (Dark - Padrão) */</span>
+<span class="text-purple-400">/* Tema Base (Dark - Padrêo) */</span>
 :root {
   <span class="text-emerald-400">--color-primary:</span> <span class="text-yellow-400">#3b82f6</span>;
   <span class="text-emerald-400">--color-primary-light:</span> <span class="text-yellow-400">#60a5fa</span>;
@@ -596,9 +596,9 @@ module.exports = {
         </div>
       </div>
 
-      <!-- Integração Tailwind -->
+      <!-- Integraçêo Tailwind -->
       <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
-        <h3 class="text-lg font-semibold text-emerald-400 mb-4">⚙️ Integração com Tailwind</h3>
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">⚙️ Integraçêo com Tailwind</h3>
         <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
           <pre class="text-neutral-300">
 <span class="text-purple-400">// tailwind.config.js</span>
@@ -628,7 +628,7 @@ module.exports = {
 
       <!-- Seletor de Tema -->
       <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600">
-        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎛️ UI de Seleção de Tema</h3>
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎛️ UI de Seleçêo de Tema</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="space-y-3">
             <p class="text-sm text-neutral-400 mb-2">Exemplo de seletor:</p>
@@ -684,12 +684,12 @@ module.exports = {
         mais polida e profissional para o usuário.
       </p>
 
-      <!-- Transição Global -->
+      <!-- Transiçêo Global -->
       <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-600 mb-6">
-        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎬 Transição Global de Cores</h3>
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎬 Transiçêo Global de Cores</h3>
         <div class="bg-dark-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
           <pre class="text-neutral-300">
-<span class="text-purple-400">/* CSS Global - Transição suave para TODAS as cores */</span>
+<span class="text-purple-400">/* CSS Global - Transiçêo suave para TODAS as cores */</span>
 
 <span class="text-emerald-400">*</span>,
 <span class="text-emerald-400">*::before</span>,
@@ -720,7 +720,7 @@ module.exports = {
             <h4 class="font-semibold text-neutral-200 mb-3">View Transitions API</h4>
             <div class="bg-dark-900 rounded p-3 font-mono text-xs overflow-x-auto">
               <pre class="text-neutral-300">
-<span class="text-purple-400">// Transição nativa do navegador</span>
+<span class="text-purple-400">// Transiçêo nativa do navegador</span>
 <span class="text-blue-400">async function</span> toggleTheme() {
   <span class="text-blue-400">if</span> (!document.startViewTransition) {
     <span class="text-purple-400">// Fallback para navegadores antigos</span>
@@ -737,7 +737,7 @@ module.exports = {
           </div>
 
           <div class="bg-dark-800 p-4 rounded-lg">
-            <h4 class="font-semibold text-neutral-200 mb-3">Animação Circular</h4>
+            <h4 class="font-semibold text-neutral-200 mb-3">Animaçêo Circular</h4>
             <div class="bg-dark-900 rounded p-3 font-mono text-xs overflow-x-auto">
               <pre class="text-neutral-300">
 <span class="text-purple-400">/* CSS para efeito circular */</span>
@@ -768,7 +768,7 @@ module.exports = {
         </p>
         <ul class="space-y-2 text-sm text-neutral-300">
           <li>• Transições apenas em elementos visíveis</li>
-          <li>• Duração curta (150-300ms)</li>
+          <li>• Duraçêo curta (150-300ms)</li>
           <li>• Usar <code class="bg-dark-800 px-1 rounded">transform</code> e <code class="bg-dark-800 px-1 rounded">opacity</code> quando possível (GPU accelerated)</li>
           <li>• Desativar transições para usuários com <code class="bg-dark-800 px-1 rounded">prefers-reduced-motion</code></li>
         </ul>
@@ -812,7 +812,7 @@ module.exports = {
             </li>
             <li class="flex items-center space-x-2">
               <span class="text-emerald-400">✓</span>
-              <span>Configuração de dark mode no Tailwind</span>
+              <span>Configuraçêo de dark mode no Tailwind</span>
             </li>
             <li class="flex items-center space-x-2">
               <span class="text-emerald-400">✓</span>
@@ -824,7 +824,7 @@ module.exports = {
             </li>
             <li class="flex items-center space-x-2">
               <span class="text-emerald-400">✓</span>
-              <span>Criação de temas personalizados</span>
+              <span>Criaçêo de temas personalizados</span>
             </li>
             <li class="flex items-center space-x-2">
               <span class="text-emerald-400">✓</span>
@@ -833,7 +833,7 @@ module.exports = {
           </ul>
         </div>
         <div>
-          <h3 class="font-semibold text-emerald-400 mb-3">Conclusão da Trilha 1:</h3>
+          <h3 class="font-semibold text-emerald-400 mb-3">Conclusêo da Trilha 1:</h3>
           <p class="text-neutral-300 mb-4">
             Parabéns! Você completou a <strong>Trilha 1 - Fundamentos</strong>.
             Agora você tem a base sólida para criar dashboards profissionais.
